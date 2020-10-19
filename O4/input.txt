@@ -1,0 +1,52 @@
+input
+{
+new_dmrg = 0
+
+#dmrg information
+N = 28
+periodic = 1
+a1 = 1
+a2 = 1
+a3 = 1
+a4 = 1
+U = 1.7466
+dmrg_cutoff = 1E-10
+precision = 1E-9
+penalty_weight = 20.0
+nstates = 3
+
+#reuse previous psi
+use_psi_ini = 0
+a2_ini = 1
+a3_ini = 1
+U_ini = 0
+dmrg_cutoff_ini = 1E-11
+
+#measurement information
+new_measurements = 0
+dist_to_boundary = 0
+measure_spin = 0
+measure_dimer = 0
+measure_dimer2 = 0
+}
+
+sweep_group
+{
+
+sweep_table
+     {
+     maxdim  mindim  cutoff  niter  noise
+     40      20      1E-8    3      1E-9
+     80      20      1E-10   2      1E-10
+     160     20      1E-12   2      0
+     320     20      1E-14   2      0
+     640     20      1E-20   2      1E-12
+     }
+
+sweep_table1
+     {
+     maxdim  mindim  cutoff  niter  noise
+     10000      20      1E-8    10      0E-12
+     }
+
+}
