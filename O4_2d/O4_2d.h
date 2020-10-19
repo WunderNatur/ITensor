@@ -70,6 +70,7 @@ public:
   void PrintSpin(const O4&, MPS&);
   void PrintxDimer(const O4&, MPS&);
   void PrintyDimer(const O4&, MPS&);
+  void PrintxyDimer(const O4&, MPS&);
 };
   
 

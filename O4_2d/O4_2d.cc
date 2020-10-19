@@ -124,6 +124,7 @@ int main(int argc, char* argv[])
   GroundStates.PrintSpin(O4, psi[0]);
   GroundStates.PrintxDimer(O4, psi[0]);
   GroundStates.PrintyDimer(O4, psi[0]);
+  GroundStates.PrintxyDimer(O4, psi[0]);
 
   //GroundStates.PrintfSpinxCorrelation(O4, psi[0]);
   //GroundStates.PrintfEntanglementEntropy(O4, psi[0]);

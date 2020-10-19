@@ -418,3 +418,17 @@ void Measurements::PrintyDimer(const O4& O4, MPS& psi)
       //std::cout << "Total dimer time = " << duration.count() << " seconds\n";
     }
 }
+
+void Measurements::PrintxyDimer(const O4& O4, MPS& psi)
+{
+  for (int i=5; i<=O4.N; i+=2)
+    {
+      auto dimer_mpo = Dimer(O4.sites, 1, 3, i, i+1);
+      auto dimer_num = inner(psi, dimer_mpo, psi);
+      
+      //auto stop = std::chrono::high_resolution_clock::now();
+      //auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+      printfln("i = %d, dimer correlation = %.10f", i, dimer_num);
+      //std::cout << "Total dimer time = " << duration.count() << " seconds\n";
+    }
+}
