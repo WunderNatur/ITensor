@@ -421,7 +421,7 @@ void Measurements::PrintyDimer(const O4& O4, MPS& psi)
 
 void Measurements::PrintxyDimer(const O4& O4, MPS& psi)
 {
-  for (int i=5; i<=O4.N; i+=2)
+  for (int i=1; i<=O4.N; i+=2)
     {
       auto dimer_mpo = Dimer(O4.sites, 1, 3, i, i+1);
       auto dimer_num = inner(psi, dimer_mpo, psi);

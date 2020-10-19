@@ -3,7 +3,7 @@ input
 new_dmrg = 0
 
 #dmrg information
-Nx = 6
+Nx = 4
 Ny = 2
 xperiodic = 1
 yperiodic = 1
@@ -12,7 +12,7 @@ a1 = 1
 a2 = 1
 a3 = 1
 a4 = 1
-U = 0.1
+U = 1
 dmrg_cutoff = 1E-12
 precision = 1E-9
 penalty_weight = 20.0
