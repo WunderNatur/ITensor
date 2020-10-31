@@ -376,12 +376,12 @@ void Measurements::PrintSpin(const O4& O4, MPS& psi)
     {
       std::ofstream ofile;
       ofile.open (file);
-      for (int i=1; i<=O4.N; ++i)
+      for (int i=0; i<=O4.N/2; ++i)
 	{
-	  auto spin_mpo = Spin(O4.sites, 1, i);
+	  auto spin_mpo = Spin(O4.sites, O4.N/2, O4.N/2 + i);
 	  auto spin_num = inner(psi, spin_mpo, psi);
 	  
-	  ofile << i << "\t" << std::pow(1, i) * spin_num << "\n";
+	  ofile << i << "\t" << std::pow(-1, i) * spin_num << "\n";
 	}
       
       ofile.close();
@@ -398,9 +398,9 @@ void Measurements::PrintDimer(const O4& O4, MPS& psi)
     {
       std::ofstream ofile;
       ofile.open (file);
-      for (int i=3; i<=O4.N; ++i)
+      for (int i=0; i<=O4.N/2-1; ++i)
 	{
-	  auto dimer_mpo = Dimer(O4.sites, 1, 2, i, (i+1)%O4.N);
+	  auto dimer_mpo = Dimer(O4.sites, O4.N/2, O4.N/2+1, O4.N/2 + i, (O4.N/2 + i)%O4.N+1);
 	  auto dimer_num = inner(psi, dimer_mpo, psi);
 	  
 	  ofile << i << "\t" << std::pow(1, i) * dimer_num << "\n";

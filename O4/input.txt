@@ -9,9 +9,9 @@ a1 = 1
 a2 = 1
 a3 = 1
 a4 = 1
-U = 1.7466
-dmrg_cutoff = 1E-6
-precision = 1E-5
+U = 0
+dmrg_cutoff = 1E-10
+precision = 1E-9
 penalty_weight = 20.0
 nstates = 1
 
@@ -23,7 +23,7 @@ U_ini = 0
 dmrg_cutoff_ini = 1E-11
 
 #measurement information
-new_measurements = 0
+new_measurements = 1
 dist_to_boundary = 0
 measure_spin = 1
 measure_dimer = 1
