@@ -110,9 +110,8 @@ int main(int argc, char* argv[])
 
   printfln("N = %d\t periodic = %d\t a2 = %.3f\t a3 = %.3f\t U = %.5f dmrg cutoff = %.1E\t precision = %.1E\t penalty weight = %d", N, periodic, a2, a3, U, dmrg_cutoff, precision, penalty_weight);
   
-  if (measure_spin) GroundStates.PrintfSpinCorrelation(O4, psi[0]);
-  if (measure_dimer) GroundStates.PrintfDimerCorrelation(O4, psi[0]);
-  if (measure_dimer2) GroundStates.PrintfDimer2Correlation(O4, psi[0]);
+  if (measure_spin) GroundStates.PrintSpin(O4, psi[0]);
+  if (measure_dimer) GroundStates.PrintDimer(O4, psi[0]);
   //GroundStates.PrintfSpinxCorrelation(O4, psi[0]);
   //GroundStates.PrintfEntanglementEntropy(O4, psi[0]);
 

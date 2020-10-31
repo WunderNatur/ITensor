@@ -51,3 +51,29 @@ MPO Measurements::Momentum(Electron const& sites)
   
   return P;
 }
+
+MPO Measurements::Spin(Electron const& sites, int site_i, int site_j)
+{
+  auto N = length(sites);
+  
+  auto ampo = AutoMPO(sites);
+
+  ampo += 1.0,"Sz",site_i,"Sz",site_j;
+
+  auto spin = toMPO(ampo,{"Cutoff=",1E-20});
+  
+  return spin;
+}
+
+MPO Measurements::Dimer(Electron const& sites, int site_i, int site_j, int site_k, int site_l)
+{
+  auto N = length(sites);
+  
+  auto ampo = AutoMPO(sites);
+
+  ampo += 1.0,"Sz",site_i,"Sz",site_j,"Sz",site_k,"Sz",site_l;
+
+  auto dimer = toMPO(ampo,{"Cutoff=",1E-20});
+  
+  return dimer;
+}

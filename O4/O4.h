@@ -58,8 +58,12 @@ public:
 
   MPO S2(Electron const&);
   MPO Momentum(Electron const&);
+  MPO Spin(Electron const&, int, int);
+  MPO Dimer(Electron const&, int, int, int, int);
   void PrintS2(const O4&, MPS&);
   void PrintMomentum(const O4&, MPS&);
+  void PrintSpin(const O4&, MPS&);
+  void PrintDimer(const O4&, MPS&);
 };
   
 

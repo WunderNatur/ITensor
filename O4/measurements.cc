@@ -368,3 +368,47 @@ void Measurements::PrintMomentum(const O4& O4, MPS& psi)
   printfln("Momentum = %.5f pi", Pnum_r);
   std::cout << "Momentum time = " << duration.count() << " seconds\n";
 }
+
+void Measurements::PrintSpin(const O4& O4, MPS& psi)
+{
+  auto file = format("data/spin_size%d_a2%.1f_a3%.1f_U%.5f.dat", O4.N, O4.a2, O4.a3, O4.U);
+  if (!utils::fileExists(file) || new_measurements)
+    {
+      std::ofstream ofile;
+      ofile.open (file);
+      for (int i=1; i<=O4.N; ++i)
+	{
+	  auto spin_mpo = Spin(O4.sites, 1, i);
+	  auto spin_num = inner(psi, spin_mpo, psi);
+	  
+	  ofile << i << "\t" << std::pow(1, i) * spin_num << "\n";
+	}
+      
+      ofile.close();
+      auto stop = std::chrono::high_resolution_clock::now();
+      auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+      std::cout << "Spin time = " << duration.count() << " seconds\n";
+    }
+}
+
+void Measurements::PrintDimer(const O4& O4, MPS& psi)
+{
+  auto file = format("data/dimer_size%d_a2%.1f_a3%.1f_U%.5f.dat", O4.N, O4.a2, O4.a3, O4.U);
+  if (!utils::fileExists(file) || new_measurements)
+    {
+      std::ofstream ofile;
+      ofile.open (file);
+      for (int i=1; i<=O4.N; ++i)
+	{
+	  auto dimer_mpo = Dimer(O4.sites, 1, 2, i, (i+1)%O4.N);
+	  auto dimer_num = inner(psi, dimer_mpo, psi);
+	  
+	  ofile << i << "\t" << std::pow(1, i) * dimer_num << "\n";
+	}
+      
+      ofile.close();
+      auto stop = std::chrono::high_resolution_clock::now();
+      auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+      std::cout << "Dimer time = " << duration.count() << " seconds\n";
+    }
+}
