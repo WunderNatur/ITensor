@@ -398,7 +398,7 @@ void Measurements::PrintDimer(const O4& O4, MPS& psi)
     {
       std::ofstream ofile;
       ofile.open (file);
-      for (int i=1; i<=O4.N; ++i)
+      for (int i=3; i<=O4.N; ++i)
 	{
 	  auto dimer_mpo = Dimer(O4.sites, 1, 2, i, (i+1)%O4.N);
 	  auto dimer_num = inner(psi, dimer_mpo, psi);
