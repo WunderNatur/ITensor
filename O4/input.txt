@@ -3,15 +3,15 @@ input
 new_dmrg = 0
 
 #dmrg information
-N = 100
+N = 200
 periodic = 0
 a1 = 1
-a2 = -0.1
+a2 = 0.1
 a3 = 0
 a4 = 0
 U = 0
-dmrg_cutoff = 1E-10
-precision = 1E-9
+dmrg_cutoff = 1E-6
+precision = 1E-5
 penalty_weight = 20.0
 nstates = 1
 
