@@ -371,14 +371,15 @@ void Measurements::PrintMomentum(const O4& O4, MPS& psi)
 
 void Measurements::PrintSpin(const O4& O4, MPS& psi)
 {
+  auto site_i = dist_to_boundary;
   auto file = format("data/spin_size%d_a2%.1f_a3%.1f_U%.5f.dat", O4.N, O4.a2, O4.a3, O4.U);
   if (!utils::fileExists(file) || new_measurements)
     {
       std::ofstream ofile;
       ofile.open (file);
-      for (int i=0; i<=O4.N/2; ++i)
+      for (int i=0; i<=O4.N-site_i; ++i)
 	{
-	  auto spin_mpo = Spin(O4.sites, O4.N/2, O4.N/2 + i);
+	  auto spin_mpo = Spin(O4.sites, site_i, site_i + i);
 	  auto spin_num = inner(psi, spin_mpo, psi);
 	  
 	  ofile << i << "\t" << std::pow(-1, i) * spin_num << "\n";
@@ -393,14 +394,15 @@ void Measurements::PrintSpin(const O4& O4, MPS& psi)
 
 void Measurements::PrintDimer(const O4& O4, MPS& psi)
 {
+  auto site_i = dist_to_boundary;
   auto file = format("data/dimer_size%d_a2%.1f_a3%.1f_U%.5f.dat", O4.N, O4.a2, O4.a3, O4.U);
   if (!utils::fileExists(file) || new_measurements)
     {
       std::ofstream ofile;
       ofile.open (file);
-      for (int i=0; i<=O4.N/2-1; ++i)
+      for (int i=0; i<=O4.N - site_i -1; ++i)
 	{
-	  auto dimer_mpo = Dimer(O4.sites, O4.N/2, O4.N/2+1, O4.N/2 + i, (O4.N/2 + i)%O4.N+1);
+	  auto dimer_mpo = Dimer(O4.sites, site_i, site_i+1, site_i + i, (site_i + i)%O4.N+1);
 	  auto dimer_num = inner(psi, dimer_mpo, psi);
 	  
 	  ofile << i << "\t" << std::pow(1, i) * dimer_num << "\n";
