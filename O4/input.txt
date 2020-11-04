@@ -3,7 +3,7 @@ input
 new_dmrg = 0
 
 #dmrg information
-N = 400
+N = 1000
 periodic = 0
 a1 = 1
 a2 = -0.1
@@ -24,7 +24,7 @@ dmrg_cutoff_ini = 1E-11
 
 #measurement information
 new_measurements = 1
-dist_to_boundary = 0
+dist_to_boundary = 200
 measure_spin = 1
 measure_dimer = 1
 measure_dimer2 = 0
