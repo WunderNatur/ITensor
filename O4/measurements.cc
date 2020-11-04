@@ -414,3 +414,25 @@ void Measurements::PrintDimer(const O4& O4, MPS& psi)
       std::cout << "Dimer time = " << duration.count() << " seconds\n";
     }
 }
+
+void Measurements::PrintDimerVEV(const O4& O4, MPS& psi)
+{
+  auto file = format("data/dimerVEV_size%d_a2%.1f_a3%.1f_U%.5f.dat", O4.N, O4.a2, O4.a3, O4.U);
+  if (!utils::fileExists(file) || new_measurements)
+    {
+      std::ofstream ofile;
+      ofile.open (file);
+      auto spin_mpo1 = Spin(O4.sites, O4.N/2-1, O4.N/2);
+      auto spin_num1 = -inner(psi, spin_mpo1, psi);
+      auto spin_mpo2 = Spin(O4.sites, O4.N/2, O4.N/2+1);
+      auto spin_num2 = -inner(psi, spin_mpo2, psi);
+      
+      ofile << 1 << "\t" << spin_num1 << "\n";
+      ofile << 2 << "\t" << spin_num2 << "\n";
+	 
+      ofile.close();
+      auto stop = std::chrono::high_resolution_clock::now();
+      auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+      std::cout << "DimerVEV time = " << duration.count() << " seconds\n";
+    }
+}

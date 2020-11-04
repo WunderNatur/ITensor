@@ -3,13 +3,13 @@ input
 new_dmrg = 0
 
 #dmrg information
-N = 1000
+N = 20
 periodic = 0
 a1 = 1
 a2 = -0.1
 a3 = 0
 a4 = 0
-U = 0.1
+U = 0.0
 dmrg_cutoff = 1E-6
 precision = 1E-5
 penalty_weight = 20.0
@@ -25,8 +25,9 @@ dmrg_cutoff_ini = 1E-11
 #measurement information
 new_measurements = 1
 dist_to_boundary = 200
-measure_spin = 1
-measure_dimer = 1
+measure_spin = 0
+measure_dimer = 0
+measure_dimerVEV = 1
 measure_dimer2 = 0
 }
 

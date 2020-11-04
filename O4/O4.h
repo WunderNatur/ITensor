@@ -64,6 +64,7 @@ public:
   void PrintMomentum(const O4&, MPS&);
   void PrintSpin(const O4&, MPS&);
   void PrintDimer(const O4&, MPS&);
+  void PrintDimerVEV(const O4&, MPS&);
 };
   
 

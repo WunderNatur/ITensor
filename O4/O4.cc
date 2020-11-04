@@ -35,6 +35,7 @@ int main(int argc, char* argv[])
   auto dist_to_boundary = input.getInt("dist_to_boundary");
   bool measure_spin = input.getInt("measure_spin");
   bool measure_dimer = input.getInt("measure_dimer");
+  bool measure_dimerVEV = input.getInt("measure_dimerVEV");
   bool measure_dimer2 = input.getInt("measure_dimer2");
   
   /* Reuse previous mps */
@@ -112,6 +113,7 @@ int main(int argc, char* argv[])
   
   if (measure_spin) GroundStates.PrintSpin(O4, psi[0]);
   if (measure_dimer) GroundStates.PrintDimer(O4, psi[0]);
+  if (measure_dimerVEV) GroundStates.PrintDimerVEV(O4, psi[0]);
   //GroundStates.PrintfSpinxCorrelation(O4, psi[0]);
   //GroundStates.PrintfEntanglementEntropy(O4, psi[0]);
 
